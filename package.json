@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "ng serve home-workout-tracker",
+    "start": "serve -s dist/apps/home-workout-tracker -l 10000",
     "build": "ng build home-workout-tracker"
   },
   "dependencies": {
@@ -26,6 +26,7 @@
     "@nx/angular": "^20.0.0",
     "@nx/workspace": "^20.0.0",
     "nx": "^20.0.0",
+    "serve": "^14.2.1",
     "typescript": "~5.5.4"
   }
 }
