@@ -1,0 +1,64 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "apps",
+  "projects": {
+    "home-workout-tracker": {
+      "projectType": "application",
+      "root": "apps/home-workout-tracker",
+      "sourceRoot": "apps/home-workout-tracker/src",
+      "prefix": "tracker",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/apps/home-workout-tracker",
+            "index": "apps/home-workout-tracker/src/index.html",
+            "browser": "apps/home-workout-tracker/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "apps/home-workout-tracker/tsconfig.app.json",
+            "assets": [],
+            "styles": [
+              "apps/home-workout-tracker/src/styles.css"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "home-workout-tracker:build:production"
+            },
+            "development": {
+              "buildTarget": "home-workout-tracker:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": false
+  }
+}

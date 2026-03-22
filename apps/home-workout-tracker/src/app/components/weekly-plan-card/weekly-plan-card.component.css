@@ -1,0 +1,39 @@
+.weekly-card {
+  padding: 24px;
+}
+
+.eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.8rem;
+  color: var(--accent-strong);
+}
+
+.weekly-card h3 {
+  margin: 8px 0 18px;
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+}
+
+.week-list {
+  display: grid;
+  gap: 10px;
+}
+
+.week-list article {
+  padding: 14px 16px;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: var(--panel-strong);
+}
+
+.week-list label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+input[type='checkbox'] {
+  accent-color: var(--accent);
+}

@@ -1,0 +1,66 @@
+<section class="card pushup-card fade-in">
+  <div class="pushup-header">
+    <div>
+      <p class="eyebrow">Push-up challenge</p>
+      <h3>Day {{ dayNumber }} strength focus</h3>
+      <p class="muted">Your daily target updates automatically to 60-70% of your current max.</p>
+    </div>
+    <div class="target-chip">{{ targetMin }}-{{ targetMax }} reps</div>
+  </div>
+
+  <div class="form-grid">
+    <label class="field">
+      <span>Max Push-ups</span>
+      <input type="number" min="1" [(ngModel)]="maxPushUps" />
+    </label>
+
+    <label class="field">
+      <span>Max set reps</span>
+      <input type="number" min="0" [(ngModel)]="maxSetReps" />
+    </label>
+  </div>
+
+  <div class="checklist">
+    <label><input type="checkbox" [(ngModel)]="maxSetCompleted" /> <span>Max set completed</span></label>
+    <label><input type="checkbox" [(ngModel)]="backOffSetsCompleted" /> <span>Back-off sets completed</span></label>
+    <label><input type="checkbox" [(ngModel)]="inclinePushUpsCompleted" /> <span>Incline push-ups completed</span></label>
+    <label><input type="checkbox" [(ngModel)]="kneeBurnoutCompleted" /> <span>Knee push-up burnout</span></label>
+  </div>
+
+  <div class="emom">
+    <div>
+      <strong>Optional EMOM timer</strong>
+      <p class="muted">{{ emomMinutesCompleted }} minutes completed</p>
+    </div>
+    <div class="emom-actions">
+      <button type="button" class="primary" (click)="toggleEmom()">{{ emomRunning ? 'Pause' : 'Start' }}</button>
+      <button type="button" class="secondary" (click)="resetEmom()">Reset</button>
+    </div>
+  </div>
+
+  <button type="button" class="save-button" (click)="save()">Save push-up progress</button>
+
+  <div class="history">
+    <div class="history-header">
+      <strong>Max push-up history</strong>
+      <span class="muted">{{ history.length }} entries</span>
+    </div>
+
+    <svg viewBox="0 0 290 140" preserveAspectRatio="none" class="chart" *ngIf="history.length; else emptyChart">
+      <polyline [attr.points]="chartPoints" />
+      <circle *ngFor="let dot of chartDots" [attr.cx]="dot.x" [attr.cy]="dot.y" r="4" />
+    </svg>
+
+    <ng-template #emptyChart>
+      <p class="muted">Log your first push-up entry to see improvement over time.</p>
+    </ng-template>
+
+    <div class="history-list" *ngIf="history.length">
+      <article *ngFor="let item of history.slice().reverse().slice(0, 5)">
+        <strong>{{ item.maxPushUps }} reps</strong>
+        <span>{{ item.date }}</span>
+      </article>
+    </div>
+  </div>
+</section>
+

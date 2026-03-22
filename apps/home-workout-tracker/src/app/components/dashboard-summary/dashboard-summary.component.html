@@ -1,0 +1,30 @@
+<section class="card summary fade-in">
+  <div class="summary-header">
+    <div>
+      <p class="eyebrow">Dashboard</p>
+      <h2>Today: {{ todayPlanTitle }}</h2>
+      <p class="muted">{{ message }}</p>
+    </div>
+    <div class="day-chip">Day {{ summary.currentDayNumber }} / 30</div>
+  </div>
+
+  <div class="metrics">
+    <article class="metric-card">
+      <span>Days completed</span>
+      <strong>{{ summary.completedDays }}</strong>
+    </article>
+    <article class="metric-card">
+      <span>Current streak</span>
+      <strong>{{ summary.currentStreak }}</strong>
+    </article>
+    <article class="metric-card">
+      <span>Push-up max</span>
+      <strong>{{ summary.latestPushUpMax || '—' }}</strong>
+    </article>
+    <article class="metric-card">
+      <span>Week</span>
+      <strong>{{ summary.currentWeekNumber }}</strong>
+    </article>
+  </div>
+</section>
+

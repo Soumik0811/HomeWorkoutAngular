@@ -1,0 +1,60 @@
+<main class="app-shell fade-in">
+  <header class="hero card">
+    <div class="hero-copy">
+      <span class="pill">30-Day Home Workout Tracker</span>
+      <h1>Train at home, stay consistent, and watch your progress compound.</h1>
+      <p class="muted">
+        Follow the Push, Pull, Legs split, complete the HIIT rounds, log your push-up challenge,
+        and build a streak that lasts the full 30 days.
+      </p>
+    </div>
+
+    <div class="hero-actions">
+      <button class="theme-toggle" type="button" (click)="toggleTheme()">
+        {{ theme() === 'dark' ? 'Switch to light mode' : 'Switch to dark mode' }}
+      </button>
+      <button class="reset-button" type="button" (click)="resetProgress()">Reset progress</button>
+    </div>
+  </header>
+
+  <tracker-dashboard-summary
+    [summary]="summary()"
+    [todayPlanTitle]="todayPlan().title"
+    [message]="motivation()"
+  />
+
+  <section class="main-grid section-grid">
+    <tracker-workout-day-card
+      [plan]="todayPlan()"
+      [progress]="todayProgress()"
+      [completed]="todayComplete()"
+      (setChanged)="toggleSet($event)"
+      (cardioRoundChanged)="toggleCardioRound($event)"
+      (restDayChanged)="markRestDay($event)"
+    />
+
+    <tracker-hiit-timer
+      *ngIf="todayPlan().includesCardio"
+      [roundStates]="todayProgress().cardioRounds"
+      (roundCompleted)="autoCompleteRound($event)"
+      (roundToggled)="toggleCardioRound($event)"
+    />
+  </section>
+
+  <section class="secondary-grid section-grid">
+    <tracker-pushup-challenge
+      [entry]="tracker.todayPushUpEntry()"
+      [history]="pushUpHistory()"
+      [dayNumber]="summary().currentDayNumber"
+      (entrySaved)="savePushUpEntry($event)"
+    />
+
+    <tracker-weekly-plan-card
+      [weekNumber]="summary().currentWeekNumber"
+      [days]="weeklyProgress()"
+    />
+  </section>
+
+  <tracker-thirty-day-grid [days]="progressDays()" />
+</main>
+

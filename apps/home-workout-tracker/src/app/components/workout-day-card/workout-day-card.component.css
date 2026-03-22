@@ -1,0 +1,111 @@
+.workout-card {
+  padding: 24px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 22px;
+}
+
+.card-header h3 {
+  margin: 4px 0 10px;
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+}
+
+.status {
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(194, 65, 12, 0.14);
+  color: var(--warning);
+  font-weight: 700;
+}
+
+.status.complete {
+  background: rgba(21, 128, 61, 0.16);
+  color: var(--success);
+}
+
+.eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.8rem;
+  color: var(--accent-strong);
+}
+
+.exercise-group {
+  padding: 18px 0 4px;
+  border-top: 1px solid var(--line);
+}
+
+.exercise-group:first-of-type {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.exercise-group h4 {
+  margin: 0 0 16px;
+  font-size: 1rem;
+}
+
+.exercise-row {
+  display: grid;
+  gap: 14px;
+  padding: 16px;
+  border-radius: 20px;
+  background: var(--panel-strong);
+  border: 1px solid var(--line);
+  margin-bottom: 12px;
+}
+
+.exercise-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.exercise-meta span {
+  color: var(--muted);
+}
+
+.sets,
+.cardio-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.set-pill,
+.round-pill,
+.rest-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.rest-toggle {
+  margin-top: 8px;
+}
+
+input[type='checkbox'] {
+  accent-color: var(--accent);
+}
+
+@media (max-width: 640px) {
+  .card-header {
+    flex-direction: column;
+  }
+
+  .exercise-meta {
+    flex-direction: column;
+  }
+}

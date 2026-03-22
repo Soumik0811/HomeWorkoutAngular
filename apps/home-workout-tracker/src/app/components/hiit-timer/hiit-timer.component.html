@@ -1,0 +1,38 @@
+<section class="card timer-card fade-in">
+  <div class="timer-header">
+    <div>
+      <p class="eyebrow">Built-in HIIT timer</p>
+      <h3>40s work / 20s rest / 3 rounds</h3>
+      <p class="muted">Burpees, mountain climbers, jump squats, high knees, and plank shoulder taps.</p>
+    </div>
+    <div class="timer-clock">{{ secondsRemaining }}s</div>
+  </div>
+
+  <div class="timer-stage">
+    <div>
+      <span class="stage-label">{{ currentPhaseLabel }}</span>
+      <h4>{{ currentExerciseLabel }}</h4>
+      <p class="muted" *ngIf="upcomingExercise">Next up: {{ upcomingExercise }}</p>
+    </div>
+    <div class="round-chip">Round {{ currentRound }}</div>
+  </div>
+
+  <div class="timer-actions">
+    <button type="button" class="primary" (click)="toggleTimer()">
+      {{ running ? 'Pause' : currentStage ? 'Start' : 'Restart' }}
+    </button>
+    <button type="button" class="secondary" (click)="reset()">Reset timer</button>
+  </div>
+
+  <div class="round-tracker">
+    <label *ngFor="let round of roundStates; let roundIndex = index" class="round-toggle">
+      <input type="checkbox" [checked]="round" (change)="onToggleRound(roundIndex)" />
+      <span>Round {{ roundIndex + 1 }}</span>
+    </label>
+  </div>
+
+  <div class="exercise-list">
+    <span *ngFor="let exercise of hiitExercises">{{ exercise }}</span>
+  </div>
+</section>
+

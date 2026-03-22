@@ -1,0 +1,123 @@
+:root {
+  --font-display: "Space Grotesk", "Segoe UI", sans-serif;
+  --font-body: "Manrope", "Segoe UI", sans-serif;
+  --bg: #f4efe8;
+  --bg-strong: #fffaf3;
+  --panel: rgba(255, 251, 246, 0.92);
+  --panel-strong: rgba(255, 255, 255, 0.95);
+  --text: #1c1917;
+  --muted: #5c5147;
+  --line: rgba(59, 47, 38, 0.12);
+  --shadow: 0 24px 64px rgba(95, 73, 52, 0.12);
+  --accent: #d97706;
+  --accent-soft: rgba(217, 119, 6, 0.14);
+  --accent-strong: #b45309;
+  --success: #15803d;
+  --danger: #dc2626;
+  --warning: #c2410c;
+}
+
+:root[data-theme='dark'] {
+  --bg: #140f11;
+  --bg-strong: #1b1517;
+  --panel: rgba(34, 27, 29, 0.92);
+  --panel-strong: rgba(40, 31, 34, 0.96);
+  --text: #f8f0e5;
+  --muted: #c5b5a6;
+  --line: rgba(255, 245, 236, 0.1);
+  --shadow: 0 28px 80px rgba(0, 0, 0, 0.38);
+  --accent: #fb923c;
+  --accent-soft: rgba(251, 146, 60, 0.16);
+  --accent-strong: #fdba74;
+  --success: #4ade80;
+  --danger: #f87171;
+  --warning: #fdba74;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background:
+    radial-gradient(circle at top left, rgba(251, 146, 60, 0.16), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(34, 197, 94, 0.12), transparent 24%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-strong) 100%);
+  color: var(--text);
+  font-family: var(--font-body);
+  transition: background 240ms ease, color 240ms ease;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app-shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 28px 0 56px;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+}
+
+.section-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  padding: 8px 14px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.fade-in {
+  animation: rise-in 420ms ease both;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 720px) {
+  .app-shell {
+    width: min(100% - 20px, 100%);
+    padding-top: 20px;
+    padding-bottom: 32px;
+  }
+}

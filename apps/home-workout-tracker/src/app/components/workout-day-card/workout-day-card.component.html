@@ -1,0 +1,81 @@
+<section class="card workout-card fade-in">
+  <div class="card-header">
+    <div>
+      <p class="eyebrow">Today's workout</p>
+      <h3>{{ plan.title }}</h3>
+      <p class="muted">
+        <span *ngIf="plan.workoutType !== 'rest'">Complete every set, then finish all three cardio rounds.</span>
+        <span *ngIf="plan.workoutType === 'rest'">Recovery counts. Mark the day complete once you honor the rest.</span>
+      </p>
+    </div>
+    <div class="status" [class.complete]="completed">{{ completed ? 'Completed' : 'In progress' }}</div>
+  </div>
+
+  <ng-container *ngIf="plan.workoutType !== 'rest'; else restDay">
+    <div class="exercise-group">
+      <h4>Exercises</h4>
+
+      <article *ngFor="let exercise of mainExercises" class="exercise-row">
+        <div class="exercise-meta">
+          <strong>{{ exercise.name }}</strong>
+          <span>{{ exercise.sets }} sets</span>
+        </div>
+
+        <div class="sets">
+          <label *ngFor="let checked of progress.completedSets[exercise.name]; let setIndex = index" class="set-pill">
+            <input
+              type="checkbox"
+              [checked]="checked"
+              (change)="onToggleSet(exercise.name, setIndex)"
+            />
+            <span>Set {{ setIndex + 1 }}</span>
+          </label>
+        </div>
+      </article>
+    </div>
+
+    <div class="exercise-group" *ngIf="coreExercises.length">
+      <h4>Core</h4>
+
+      <article *ngFor="let exercise of coreExercises" class="exercise-row">
+        <div class="exercise-meta">
+          <strong>{{ exercise.name }}</strong>
+          <span>{{ exercise.sets }} sets</span>
+        </div>
+
+        <div class="sets">
+          <label *ngFor="let checked of progress.completedSets[exercise.name]; let setIndex = index" class="set-pill">
+            <input
+              type="checkbox"
+              [checked]="checked"
+              (change)="onToggleSet(exercise.name, setIndex)"
+            />
+            <span>Set {{ setIndex + 1 }}</span>
+          </label>
+        </div>
+      </article>
+    </div>
+
+    <div class="exercise-group">
+      <h4>Cardio rounds</h4>
+      <div class="cardio-row">
+        <label *ngFor="let round of progress.cardioRounds; let roundIndex = index" class="round-pill">
+          <input
+            type="checkbox"
+            [checked]="round"
+            (change)="cardioRoundChanged.emit(roundIndex)"
+          />
+          <span>Round {{ roundIndex + 1 }}</span>
+        </label>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-template #restDay>
+    <label class="rest-toggle">
+      <input type="checkbox" [checked]="progress.restDayComplete" (change)="onToggleRestDay($event)" />
+      <span>Rest day completed</span>
+    </label>
+  </ng-template>
+</section>
+

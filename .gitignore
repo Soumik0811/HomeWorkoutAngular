@@ -1,0 +1,8 @@
+dist
+node_modules
+.angular
+.nx
+.cache
+tmp
+coverage
+

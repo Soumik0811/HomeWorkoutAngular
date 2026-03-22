@@ -1,0 +1,14 @@
+<section class="card weekly-card fade-in">
+  <p class="eyebrow">Weekly plan</p>
+  <h3>Week {{ weekNumber }}</h3>
+
+  <div class="week-list">
+    <article *ngFor="let day of days">
+      <label>
+        <input type="checkbox" [checked]="day.completed" disabled />
+        <span>Day {{ day.plan.cycleDay }} - {{ day.plan.title }}</span>
+      </label>
+    </article>
+  </div>
+</section>
+

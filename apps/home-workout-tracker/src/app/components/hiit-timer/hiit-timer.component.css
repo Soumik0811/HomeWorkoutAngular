@@ -1,0 +1,104 @@
+.timer-card {
+  padding: 24px;
+}
+
+.timer-header,
+.timer-stage {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.timer-header h3,
+.timer-stage h4 {
+  margin: 6px 0;
+  font-family: var(--font-display);
+}
+
+.timer-clock {
+  min-width: 96px;
+  text-align: center;
+  padding: 18px 16px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, var(--accent-soft), transparent);
+  border: 1px solid var(--line);
+  font-family: var(--font-display);
+  font-size: 2rem;
+}
+
+.timer-stage {
+  padding: 18px 0;
+}
+
+.stage-label,
+.eyebrow {
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.8rem;
+  color: var(--accent-strong);
+}
+
+.round-chip {
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: var(--panel-strong);
+  border: 1px solid var(--line);
+  font-weight: 700;
+}
+
+.timer-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.primary,
+.secondary {
+  min-height: 48px;
+  padding: 0 18px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+}
+
+.primary {
+  background: var(--accent);
+  color: #fffaf2;
+  border-color: transparent;
+}
+
+.secondary {
+  background: var(--panel-strong);
+  color: var(--text);
+}
+
+.round-tracker,
+.exercise-list {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.round-toggle,
+.exercise-list span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+input[type='checkbox'] {
+  accent-color: var(--accent);
+}
+
+@media (max-width: 640px) {
+  .timer-header,
+  .timer-stage {
+    flex-direction: column;
+  }
+}
