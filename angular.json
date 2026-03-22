@@ -19,7 +19,9 @@
               "zone.js"
             ],
             "tsConfig": "apps/home-workout-tracker/tsconfig.app.json",
-            "assets": [],
+            "assets": [
+              "apps/home-workout-tracker/src/_redirects"
+            ],
             "styles": [
               "apps/home-workout-tracker/src/styles.css"
             ]
